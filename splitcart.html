@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SplitCart | Snehitha Andapally</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="name" href="index.html">Snehitha Andapally</a>
+    <nav><a href="index.html#case-studies">All case studies</a></nav>
+  </header>
+
+  <p class="eyebrow">Case study &middot; Self-initiated</p>
+  <h1>SplitCart: splitting a group food order without typing the bill</h1>
+  <p class="lede">One friend pays for a group food order, then spends the week working out who owes what and chasing it. SplitCart imports the order and lets each friend claim what they ate.</p>
+
+  <dl class="facts">
+    <div><dt>Type</dt><dd>Personal project. A working prototype, not a launched product.</dd></div>
+    <div><dt>Built on</dt><dd>Swiggy's read-only order tools for developers</dd></div>
+    <div><dt>Status</dt><dd>Runs end to end on demo data. Order list tested against a real account.</dd></div>
+  </dl>
+
+  <h2>The problem</h2>
+  <p>In a group food order, one person hosts and pays. Afterwards they have to split a bill that includes delivery, platform and packaging fees, tax and a coupon, across friends who ordered different things. Existing bill-splitting apps make the host type the bill in by hand.</p>
+
+  <h2>The users</h2>
+  <ul>
+    <li><b>The host.</b> Paid the bill and wants the money back without doing arithmetic or nagging friends.</li>
+    <li><b>The friends.</b> Want to pay for what they ate, see why the amount is what it is, and be done.</li>
+  </ul>
+
+  <h2>What I found</h2>
+  <p>My first plan was simple: read the order and split it by who ordered what. Then I looked at what the order data actually contains. It lists the items and the bill, but it does not say which person added which item.</p>
+  <p>That one gap decided the design. The app could not work out the split by itself, so the people who know the answer have to supply it, with as little effort as possible.</p>
+
+  <h2>What I decided, and why</h2>
+
+  <h3>Friends claim their own items</h3>
+  <p>Every item starts on the host. Each friend opens the order and taps Mine, Shared or Not mine. Shares update as they claim, and every change is logged. Nobody types a bill, and the host does not have to remember who ate what.</p>
+
+  <h3>The app never places orders or moves money</h3>
+  <p>SplitCart only reads orders. "Pay" opens the friend's own UPI app with the amount filled in. The payer then taps "I've paid", and the receiver confirms when the money arrives. Staying read-only meant no payment licence, far less risk, and nothing a user has to trust the app with.</p>
+
+  <h3>Fees and discounts follow the food</h3>
+  <p>If your food was 30% of the order, you pay 30% of each fee and get 30% of the coupon. Someone who ordered nothing pays nothing. This is the rule friends expect without being told, so it is the default.</p>
+
+  <h3>Shares always add up to the bill</h3>
+  <p>You cannot split 100 rupees three ways evenly. The leftover paisa goes to whoever lost most in rounding, and to the host on a tie. I checked this with 2,000 randomly generated bills. A split that is one rupee off destroys trust in every other number on the screen.</p>
+
+  <h3>Nobody leaves with a debt</h3>
+  <p>A person can leave a group, or be removed, only when their balance is zero and no payment is waiting to be confirmed.</p>
+
+  <h2>Where it stands</h2>
+  <ul>
+    <li>The full flow works on demo data: import an order, claim items, pay, confirm, nudge.</li>
+    <li>I tested the order list against a real account. That showed three differences from the documentation, including order times with no year, which I handled.</li>
+    <li>Importing a full real order is not working yet. Developer access is by invitation, and the order-detail call returned nothing in my test. I say this plainly because it is the main open risk.</li>
+  </ul>
+
+  <h2>How I would measure success</h2>
+  <ul>
+    <li><b>Time to settled:</b> from order delivered to every friend's balance at zero.</li>
+    <li><b>Claim rate:</b> the share of friends who claim their items without a reminder.</li>
+    <li><b>Disputes:</b> the share of splits edited after someone has already paid.</li>
+  </ul>
+
+  <h2>What I would do next</h2>
+  <ul>
+    <li>Run it with five real friend groups for a month, and watch where they get stuck.</li>
+    <li>If the platform ever shares who added each item, skip the claiming step entirely.</li>
+    <li>Add reminders that send themselves, since nudging is the part hosts dislike most.</li>
+  </ul>
+
+  <footer><a href="index.html#case-studies">Back to all case studies</a></footer>
+</div>
+</body>
+</html>
