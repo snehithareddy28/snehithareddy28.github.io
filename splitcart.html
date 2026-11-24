@@ -14,8 +14,8 @@
   </header>
 
   <p class="eyebrow">Case study &middot; Self-initiated</p>
-  <h1>SplitCart: splitting a group food order without typing the bill</h1>
-  <p class="lede">One friend pays for a group food order, then spends the week working out who owes what and chasing it. SplitCart imports the order and lets each friend claim what they ate.</p>
+  <h1>SplitCart: bill splitting for group food orders</h1>
+  <p class="lede">Delivery apps do not split the bill for group orders, so one friend pays and then spends the week working out who owes what. SplitCart is an MVP that allocates each person's share of items, taxes and fees, with edits before settlement.</p>
 
   <dl class="facts">
     <div><dt>Type</dt><dd>Personal project. A working prototype, not a launched product.</dd></div>
@@ -24,7 +24,7 @@
   </dl>
 
   <h2>The problem</h2>
-  <p>In a group food order, one person hosts and pays. Afterwards they have to split a bill that includes delivery, platform and packaging fees, tax and a coupon, across friends who ordered different things. Existing bill-splitting apps make the host type the bill in by hand.</p>
+  <p>In a group food order, one person hosts and pays. Afterwards they have to split a bill that includes delivery, platform and packaging fees, tax and a coupon, across friends who ordered different things. Delivery apps do not split it for them, and existing bill-splitting apps make the host type the bill in by hand.</p>
 
   <h2>The users</h2>
   <ul>
@@ -70,7 +70,7 @@
   <h2>What I would do next</h2>
   <ul>
     <li>Run it with five real friend groups for a month, and watch where they get stuck.</li>
-    <li>If the platform ever shares who added each item, skip the claiming step entirely.</li>
+    <li>Use the delivery app's existing group-order data on who added each item, so nobody has to claim anything. The app already records it during a group order; it is not shared with outside tools today, which is the remaining friction.</li>
     <li>Add reminders that send themselves, since nudging is the part hosts dislike most.</li>
   </ul>
 
